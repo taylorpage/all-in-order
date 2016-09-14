@@ -3,9 +3,10 @@ const mongoose = require('mongoose');
 const CustomerSchema = new mongoose.Schema({
   name: String,
   status: String,
-  properties: Array,
+  property: String,
   permalink: String,
-  updated_at: { type: Date, default: Date.now },
+  items: Array,
+  updated_at: { type: Date, default: Date.now }
 });
 
-const Item = mongoose.model('Customer', CustomerSchema);
+const Customer = mongoose.model('Customer', CustomerSchema);

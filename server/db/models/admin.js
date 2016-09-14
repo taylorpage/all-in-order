@@ -9,4 +9,4 @@ const AdminSchema = new mongoose.Schema({
   updated_at: { type: Date, default: Date.now },
 });
 
-const Item = mongoose.model('Admin', AdminSchema);
+const Customer = mongoose.model('Admin', AdminSchema);
