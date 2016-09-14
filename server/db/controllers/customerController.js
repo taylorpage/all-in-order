@@ -1,7 +1,7 @@
 const Customer = require('../models/customer');
 
 module.exports = {
-  createCustomer: (name, status, property, callback) => {
+  create: (name, status, property, callback) => {
     Customer.create({
       name: name,
       status: status,
@@ -12,9 +12,22 @@ module.exports = {
       callback(data);
     })
   },
+
   getAll: (callback) => {
-    Customer.find({}, (err, data) => {
-      callback(data);
+    Customer.find({}, (err, customers) => {
+      callback(customers);
+    })
+  },
+
+  addItems: (conditions, item, callback) => {
+    Customer.update(conditions, item, (err, customer) => {
+      callback(customer);
+    })
+  },
+
+  getItems: (conditions, callback) => {
+    Customer.find(conditions, (err, customer) => {
+      callback(customer);
     })
   }
 }

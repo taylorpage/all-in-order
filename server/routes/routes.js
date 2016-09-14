@@ -5,7 +5,7 @@ module.exports = (app, express) => {
 
   //Main route
   app.get('/', (req, res) => {
-    customerController.print();
+    console.log('Main');
     res.end();
   })
 
@@ -15,12 +15,32 @@ module.exports = (app, express) => {
     })
   });
 
+  app.post('/customer/items', (req, res) => {
+    let conditions = { permalink: req.body.permalink };
+
+    customerController.getItems(conditions, data => {
+      res.status(200).send(data[0].items);
+    })
+  })
+
+  app.post('/customer/update', (req, res) => {
+    let conditions = { permalink: req.body.permalink };
+
+    customerController.getItems(conditions, data => {
+      let updates = { items: data[0].items.concat(req.body.item) };
+
+      customerController.addItems(conditions, updates, (data) => {
+        res.status(200).send(data);
+      })
+    })
+  })
+
   app.post('/customer/create', (req, res) => {
     let name = req.body.name;
     let status = req.body.status;
     let property = req.body.property;
 
-    customerController.createCustomer(name, status, property, data => {
+    customerController.create(name, status, property, data => {
       res.status(200).send(data);
     });
   })
