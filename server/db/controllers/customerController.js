@@ -1,13 +1,20 @@
-const Item = require('../models/Item');
+const Customer = require('../models/customer');
 
 module.exports = {
-  createCustomer: function(req, res) {
+  createCustomer: (name, status, property, callback) => {
     Customer.create({
-      name: req.body.name,
-      status: req.body.status,
-      property: req.body.property,
-      permalink: req.permalink,
+      name: name,
+      status: status,
+      property: property,
+      permalink: 'perma.link',
       items: []
+    }, (err, data) => {
+      callback(data);
+    })
+  },
+  getAll: (callback) => {
+    Customer.find({}, (err, data) => {
+      callback(data);
     })
   }
 }
