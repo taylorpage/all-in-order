@@ -1,0 +1,19 @@
+{
+  "name": "all_in_order",
+  "version": "1.0.0",
+  "description": "Fulton Works Code Challenge",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/taylorpage/all-in-order.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/taylorpage/all-in-order/issues"
+  },
+  "homepage": "https://github.com/taylorpage/all-in-order#readme"
+}
