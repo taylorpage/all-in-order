@@ -1,7 +1,8 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const middleware = require('./middleware/middleware')
-const routes = require('./routes/routes')
+const middleware = require('./middleware/middleware');
+const customerRoutes = require('./routes/customerRoutes');
+const adminRoutes = require('./routes/adminRoutes');
 
 const app = express();
 
@@ -9,10 +10,11 @@ const app = express();
 middleware(app, express);
 
 //Connect routes
-routes(app, express);
+customerRoutes(app, express);
+adminRoutes(app, express);
 
 //Connect database
-const mongouri = process.env.MONGODB_URI || 'mongodb://localhost/marvin';
+const mongouri = process.env.MONGODB_URI || 'mongodb://localhost/allInOneDb';
 
 mongoose.connect(mongouri).then(() => {
   console.log('Database connected')
