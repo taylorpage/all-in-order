@@ -5,4 +5,10 @@ module.exports = (app, express) => {
     console.log('admin');
     res.end();
   })
+
+  app.post('/admin/signin', (req, res) => {
+    adminController.signin(req, data => {
+      res.status(200).send(data);
+    })
+  })
 }
