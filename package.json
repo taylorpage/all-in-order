@@ -4,7 +4,7 @@
   "description": "Fulton Works Code Challenge",
   "main": "index.js",
   "scripts": {
-    "test": "mocha spec",
+    "test": "mongo allInOneDb --eval 'db.dropDatabase()' & mocha spec",
     "start": "node server/server.js"
   },
   "repository": {

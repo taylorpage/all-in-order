@@ -3,11 +3,15 @@ const customerController = require('../db/controllers/customerController');
 
 module.exports = (app, express) => {
 
+  //Gets all customers and related information
+
   app.get('/customer/all', (req, res) => {
     customerController.getAll(data => {
       res.status(200).send(data);
     })
   });
+
+  //Gets all items from a specific customer based on the permalink provided
 
   app.post('/customer/items', (req, res) => {
     let conditions = { permalink: req.body.permalink };
@@ -17,7 +21,9 @@ module.exports = (app, express) => {
     })
   })
 
-  app.post('/customer/update', (req, res) => {
+  //Adds an item to a specific customers list based on the permalink provided
+
+  app.post('/customer/add/item', (req, res) => {
     let conditions = { permalink: req.body.permalink };
 
     customerController.getItems(conditions, data => {
@@ -27,6 +33,8 @@ module.exports = (app, express) => {
       })
     })
   })
+
+  //Changes the status of a specific item based on item name provided for a specific customer based on the permalink provided
 
   app.post('/customer/status', (req, res) => {
     let match = req.body.item.name;
@@ -45,6 +53,8 @@ module.exports = (app, express) => {
       });
     })
   })
+
+  //Creates a new customer
 
   app.post('/customer/create', (req, res) => {
     let name = req.body.name;
