@@ -1,20 +1,26 @@
 const Admin = require('../models/admin');
 
 module.exports = {
-  create: (name, email, password, callback) => {
+  create: (req, callback) => {
     Admin.create({
-      name: name,
-      email: email,
-      password: password,
+      name: req.body.name,
+      email: req.body.email,
+      password: req.body.password
     }, (err, data) => {
       callback(data);
     });
   },
 
-  signin: (conditions, callback) => {
-    console.log(conditions.body)
-    // Admin.findOne(req, (err, admin) => {
-    //   callback(admin);
-    // })
+  getAll: (callback) => {
+    Admin.find({}, (err, admins) => {
+      callback(admins);
+    })
+  },
+
+  signin: (req, callback) => {
+    let conditions = { email: req.body.email }
+    Admin.findOne(conditions, (err, admin) => {
+      callback(admin.password === req.body.password);
+    });
   }
 }
