@@ -20,7 +20,6 @@ module.exports = {
   },
 
   addItem: (req, data, callback) => {
-
     let updates = { items: data.items.concat(req.body.item) };
     let conditions = { permalink: req.body.permalink };
 
