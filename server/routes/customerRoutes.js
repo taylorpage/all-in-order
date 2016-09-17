@@ -13,7 +13,7 @@ module.exports = (app, express) => {
     let conditions = { permalink: req.body.permalink };
 
     customerController.getItems(conditions, data => {
-      res.status(200).send(data[0].items);
+      res.status(200).send(data.items);
     })
   })
 
