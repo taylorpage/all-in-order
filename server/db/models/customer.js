@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const CustomerSchema = new mongoose.Schema({
   name: String,
-  status: String,
+  email: String,
   property: String,
   permalink: String,
   items: Array,

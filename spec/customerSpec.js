@@ -10,7 +10,7 @@ describe('Routing', function() {
     it('should create a new customer', function(done) {
       let req = {
         name: 'Jane Doe',
-        state: 'Testing',
+        email: 'janedoe@email.com',
         property: 'Address',
         permalink: 'perma.link3'
       }
@@ -28,7 +28,7 @@ describe('Routing', function() {
     it('should create a second customer', function(done) {
       let req = {
         name: 'John Doe',
-        state: 'Testing',
+        email: 'johndoe@email.com',
         property: 'Address',
         permalink: 'perma.link4'
       }

@@ -1,10 +1,10 @@
 const Customer = require('../models/customer');
 
 module.exports = {
-  create: (name, status, property, permalink, callback) => {
+  create: (name, email, property, permalink, callback) => {
     Customer.create({
       name: name,
-      status: status,
+      email: email,
       property: property,
       permalink: permalink,
       items: []

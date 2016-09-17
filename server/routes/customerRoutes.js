@@ -58,11 +58,11 @@ module.exports = (app, express) => {
 
   app.post('/customer/create', (req, res) => {
     let name = req.body.name;
-    let status = req.body.status;
+    let email = req.body.email;
     let property = req.body.property;
     let permalink = req.body.permalink;
 
-    customerController.create(name, status, property, permalink, data => {
+    customerController.create(name, email, property, permalink, data => {
       res.status(200).send(data);
     });
   })
