@@ -11,8 +11,7 @@ describe('Routing', function() {
       let req = {
         name: 'Jane Doe',
         email: 'janedoe@email.com',
-        property: 'Address',
-        permalink: 'perma.link3'
+        property: 'Address'
       }
 
       request.post(`${url}/customer/create`, { form: req }, (err, data, body) => {
@@ -29,8 +28,7 @@ describe('Routing', function() {
       let req = {
         name: 'John Doe',
         email: 'johndoe@email.com',
-        property: 'Address',
-        permalink: 'perma.link4'
+        property: 'Address'
       }
 
       request.post(`${url}/customer/create`, { form: req }, (err, data, body) => {
@@ -38,7 +36,7 @@ describe('Routing', function() {
         body = JSON.parse(body);
 
         expect(body.name).to.equal('John Doe');
-        expect(body.permalink).to.equal('perma.link4');
+        expect(body.property).to.equal('Address');
         done();
       })
     });
@@ -96,7 +94,7 @@ describe('Routing', function() {
   });
 
   describe('customer/status', function() {
-    it('should return all customer\'s data', function(done) {
+    it('should be able to change item status', function(done) {
       const req = {
         permalink: 'perma.link3',
         item: { name: 'test', status: 'changed' }

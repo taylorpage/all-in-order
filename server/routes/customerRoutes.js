@@ -46,4 +46,12 @@ module.exports = (app, express) => {
       });
     })
   })
+
+  //Forwards permalink from email to recipient email provided
+
+  app.post('/customer/forwardLink', (req, res) => {
+    customerController.forwardLink(req, data => {
+      res.status(200).send('done');
+    })
+  })
 };
