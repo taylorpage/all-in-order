@@ -3,15 +3,15 @@
 ##Customer Home Item Cataloger
 This is the repository for the API
 
-This API was built in Node.js
-The API is being served up using Express.js
-The database being utilized is MongoDB and the local name being used is "AllInOneDb"
+This API was built in Node.js, the sever was built with Express.js and the database being utilized is MongoDB.
 
 ###Get It Running
 
 To start up locally first start up MongoDB
 
 `mongod`
+(DB Name for local repo is: **AllInOneDb**)
+
 
 To run the server
 
