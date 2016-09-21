@@ -11,6 +11,9 @@ function permalinkMaker(email) {
 }
 
 module.exports = {
+
+  //Create a new customer
+
   create: (req, callback) => {
     Customer.create({
       name: req.body.name,
@@ -23,11 +26,15 @@ module.exports = {
     })
   },
 
+  //Get all customers
+
   getAll: (callback) => {
     Customer.find({}, (err, customers) => {
       callback(customers);
     })
   },
+
+  //Add an item to a specific customer's list
 
   addItem: (req, data, callback) => {
     let updates = { items: data.items.concat(req.body.item) };
@@ -37,6 +44,8 @@ module.exports = {
       callback(customer);
     })
   },
+
+  //Change the status of a specific item in a customer's list
 
   changeStatus: (req, data, callback) => {
     let match = req.body.item.name;
@@ -52,6 +61,8 @@ module.exports = {
     })
   },
 
+  //Get all items from a specific customer
+
   getItems: (req, callback) => {
     let conditions = { permalink: req.body.permalink };
 
@@ -59,6 +70,8 @@ module.exports = {
       callback(customer);
     })
   },
+
+  //Forward permalink to a specified email
 
   forwardLink: (req, callback) => {
     let conditions = { permalink: req.body.permalink }
