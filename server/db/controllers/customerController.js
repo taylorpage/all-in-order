@@ -1,4 +1,14 @@
 const Customer = require('../models/customer');
+const sendmail = require('sendmail');
+
+function permalinkMaker(email) {
+  let alpha = 'abcdefghijklmnopqrstuvwxyz@.-'
+  let code = '';
+  email.split('').forEach(char => {
+    code += alpha.indexOf(char).toString();
+  })
+  return `http://allinone.com/customer/${code}`
+}
 
 module.exports = {
   create: (req, callback) => {
@@ -6,7 +16,7 @@ module.exports = {
       name: req.body.name,
       email: req.body.email,
       property: req.body.property,
-      permalink: req.body.permalink,
+      permalink: permalinkMaker(req.body.email),
       items: []
     }, (err, data) => {
       callback(data);
@@ -49,4 +59,22 @@ module.exports = {
       callback(customer);
     })
   },
+
+  forwardLink: (req, callback) => {
+    let conditions = { permalink: req.body.permalink }
+    let recipient = req.body.to;
+
+    Customer.find(conditions, (err, customer) => {
+      console.log(customer);
+      sendmail({
+        from: customer.email,
+        to: recipient,
+        subject: 'Check Out My Stuff!',
+        html: `Hello, I am forwarding you a link so you can check out some stuff I have for sale. Click Here: ${customer.permalink}`,
+      }, function(err, reply) {
+        console.log(err && err.stack);
+        console.dir(reply);
+      });
+    })
+  }
 }
