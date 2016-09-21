@@ -26,9 +26,8 @@ describe('Routing', function() {
   });
 
   describe('admin/signin', function() {
-    it('should create a new admin', function(done) {
+    it('should sign admin in', function(done) {
       let req = {
-        name: 'Jane Doe',
         email: 'janedoe@email.com',
         password: 'TestPassword'
       }
@@ -38,6 +37,21 @@ describe('Routing', function() {
         body = JSON.parse(body);
 
         expect(body).to.equal(true);
+        done();
+      })
+    });
+
+    it('should detect incorrect password', function(done) {
+      let req = {
+        email: 'janedoe@email.com',
+        password: 'WrongPassword'
+      }
+
+      request.post(`${url}/admin/signin`, { form: req }, (err, data, body) => {
+
+        body = JSON.parse(body);
+
+        expect(body).to.equal(false);
         done();
       })
     });
