@@ -26,38 +26,52 @@ To run the tests
 
 Get all admins and their data (This is for development and would be removed for security purposes)
 
-`/admin/test`
+GET: `/admin/all`
 
 Create a new admin account
 
-`/admin/create`
+POST: `/admin/create`
+
+#####Request Body: `{ name: STRING, email: STRING, password: STRING }`
 
 Sign in with an already created admin account
 
-`/admin/signin`
+POST: `/admin/signin`
+
+#####Request Body: `{ email: STRING, password: STRING }`
 
 Create a new customer
 
-`/customer/create`
+POST: `/customer/create`
+
+#####Request Body: `{ name: STRING, email: STRING, property: STRING }`
 
 Get all customers and related information
 
-`/customer/all`
+GET: `/customer/all`
 
 Get all items from a specfic customer based on the permalink provided
 
-`/customer/items`
+POST: `/customer/items`
+
+#####Request Body: `{ permalink: STRING }`
 
 Adds an item to a specific customer's list based on the permalink provided
 
-`/customer/add/item`
+POST: `/customer/add/item`
+
+#####Request Body: `{ item: { name: STRING, status: STRING }, permalink: STRING }`
 
 Update status of a specific item in a customer's list
 
-`/customer/status`
+POST: `/customer/status`
+
+#####Request Body: `{ item: { name: STRING, status: STRING }, permalink: STRING }`
 
 Forward email with customer permalink to a specified email
 
-`/customer/forwardLink`
+POST: `/customer/forwardLink`
+
+#####Request Body: `{ to: STRING, permalink: STRING }`
 
 
