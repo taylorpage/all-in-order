@@ -13,7 +13,7 @@ To start up locally first start up MongoDB
 
 `mongod`
 
-The run the server
+To run the server
 
 `npm start`
 
